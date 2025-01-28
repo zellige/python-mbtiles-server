@@ -12,34 +12,20 @@ At this stage, its a "build your own" kinda deal, but I have plans to make some 
 To set up, first clone this repo: 
 
 ```
-git clone git@github.com:zellige/simple-mbtiles-server.git"
-cd simple-mbtiles-server
+git clone git@github.com:zellige/python-mbtiles-server.git"
+cd python-mbtiles-server
 ```
-
-Assuming you have stack installed and set up (if not, see [here](<https://docs.haskellstack.org/en/stable/README/>)) for instructions )
-
-```
-stack build
-```
-
-## Running
-
-```
-
-## Overview
-This guide explains how to integrate the simple-mbtiles-server with TransViz, specifically handling SCRAM data tiles.
 
 ## Installation
 ```bash
-# In your TransViz environment
-pip install simple-mbtiles-server
+pip install python-mbtiles-server
 ```
 
 ## Basic Usage
 
 ### 1. Direct Python Integration
 ```python
-from simple_mbtiles_server.server import create_app
+from python_mbtiles_server.server import create_app
 from fastapi import FastAPI
 from pathlib import Path
 
