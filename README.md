@@ -1,5 +1,5 @@
-# simple-mbtiles-server
-The simple mbtiles server is a quick and easy way to get starting with the mapbox vector tiles ecosystem.
+# python-mbtiles-server
+The simple mbtiles server is a quick and easy way to get starting with the mapbox vector tiles ecosystem in python.
 
 The server can serve a file built using [tippecanoe](https://github.com/mapbox/tippecanoe).
 
@@ -25,7 +25,41 @@ stack build
 ## Running
 
 ```
-stack exec -- simple-mbtiles-server --mbtilesFile your_mbtiles_file.mbtiles -b
+
+## Overview
+This guide explains how to integrate the simple-mbtiles-server with TransViz, specifically handling SCRAM data tiles.
+
+## Installation
+```bash
+# In your TransViz environment
+pip install simple-mbtiles-server
+```
+
+## Basic Usage
+
+### 1. Direct Python Integration
+```python
+from simple_mbtiles_server.server import create_app
+from fastapi import FastAPI
+from pathlib import Path
+
+def setup_tile_server(mbtiles_path: str) -> FastAPI:
+    """Create a tile server for SCRAM data"""
+    app = create_app(
+        mbtiles_path=Path(mbtiles_path),
+        static_dir=None  # Optional: Add static files if needed
+    )
+    return app
+
+# Example usage
+app = setup_tile_server("path/to/scram/links.mbtiles")
+```
+
+### 2. Command Line Usage
+For development and testing:
+```bash
+python -m simple_mbtiles_server.cli path/to/scram/links.mbtiles --port 8765
+
 ```
 
 ## Code formating
