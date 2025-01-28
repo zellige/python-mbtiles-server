@@ -1,0 +1,62 @@
+name:                simple-mbtiles-server
+version:             0.0.2.0
+github:              "zellige/simple-mbtiles-server"
+license:             "Apache-2.0"
+author:              "Zellige"
+maintainer:          "ljnicol@users.noreply.github.com"
+copyright:           "2020 Zellige Organisation"
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the README on GitHub at <https://github.com/zellige/simple-mbtiles-server#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+
+library:
+  source-dirs: src
+  ghc-options:
+    - -fno-warn-deprecations
+    - -fprint-potential-instances
+    - -fwarn-unused-imports
+    - -fwarn-unused-binds
+    - -fwarn-tabs
+  default-extensions:
+    - OverloadedStrings
+    - TypeOperators
+    - DataKinds
+    - RecordWildCards
+    - DeriveGeneric
+  dependencies:
+    - servant-server
+    - wai
+    - warp
+    - open-browser
+    - optparse-generic
+    - bytestring
+    - text
+    - aeson
+    - neat-interpolation
+    - mtl
+    - unordered-containers
+    - mbtiles
+
+executables:
+  simple-mbtiles-server:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - simple-mbtiles-server
+    - optparse-generic
